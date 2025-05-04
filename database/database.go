@@ -11,13 +11,16 @@ type Service struct {
 	db *gorm.DB
 }
 
-var lifeflowDB = sqldb.NewDatabase("lifeflow", sqldb.DatabaseConfig{
+// you can name your database whatever you want
+const DB_NAME = "MY_DB_NAME"
+
+var myDB = sqldb.NewDatabase(DB_NAME, sqldb.DatabaseConfig{
 	Migrations: "./migrations",
 })
 
 func InitService() (*Service, error) {
 	db, err := gorm.Open(postgres.New(postgres.Config{
-		Conn: lifeflowDB.Stdlib(),
+		Conn: myDB.Stdlib(),
 	}))
 
 	if err != nil {
@@ -28,5 +31,5 @@ func InitService() (*Service, error) {
 }
 
 func GetDB() *sqldb.Database {
-	return lifeflowDB
+	return myDB
 }

@@ -44,14 +44,21 @@ This project demonstrates setting up a Go application using the Encore framework
 3.  **Set Up Atlas Migration Script:**
     Configure your Atlas migration script as needed for your project structure and database connection. (Refer to Atlas documentation for details).
 
-4.  **Generate Initial Migration:**
-    Use Git Bash (or a similar shell) to navigate to the `database` directory and run the script that generates the initial database migration based on your GORM models. Make sure you are in the project's root directory initially.
+4.  **Set Database Name & Generate Initial Migration:**
+    Before generating the migration, ensure you update the database name. Modify the `DB_NAME` constant in the <mcfile name="database.go" path="c:\Users\cheah\encore-go-template\database\database.go"></mcfile> file (around line 15) from `"MY_DB_NAME"` to your desired database name.
+
+    Then, use Git Bash (or a similar shell) to navigate to the `database` directory and run the script that generates the initial database migration based on your GORM models. Make sure you are in the project's root directory initially.
 
     ```bash
     cd database
     ../scripts/generate-migration init
     ```
     *Note: This assumes you have a script named `generate-migration` inside a `scripts` directory relative to the project root, and your GORM models/Atlas configuration are set up relative to the `database` directory.*
+
+## Docker (POSTGRESQL related information)
+
+1.  The default user is `postgres` and the password is `postgres`.
+2.  Normally, the database is running on port `5432`.
 
 ## Running the Application
 
@@ -60,3 +67,5 @@ To run the Encore application, execute the following command in your project's r
 ```bash
 encore run
 ```
+
+
