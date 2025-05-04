@@ -12,13 +12,12 @@ type Service struct {
 }
 
 // you can name your database whatever you want
-const DB_NAME = "MY_DB_NAME"
-
-var myDB = sqldb.NewDatabase(DB_NAME, sqldb.DatabaseConfig{
+var myDB = sqldb.NewDatabase("my_db_name", sqldb.DatabaseConfig{
 	Migrations: "./migrations",
 })
 
 func InitService() (*Service, error) {
+
 	db, err := gorm.Open(postgres.New(postgres.Config{
 		Conn: myDB.Stdlib(),
 	}))

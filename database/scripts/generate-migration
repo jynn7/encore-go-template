@@ -3,7 +3,7 @@ set -eu
 
 # Set the database name at here too
 # example DB_NAME=bookingDB
-DB_NAME=MY_DB_NAME
+DB_NAME=my_db_name
 MIGRATION_NAME=${1:-}
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
