@@ -46,8 +46,8 @@ This project demonstrates setting up a Go application using the Encore framework
 
 4.  **Set Database Name & Generate Initial Migration:**
     Before generating the migration, ensure you update the database name in **two** places:
-    *   Modify the `DB_NAME` constant in the <mcfile name="database.go" path="c:\Users\cheah\encore-go-template\database\database.go"></mcfile> file (around line 15) from `"MY_DB_NAME"` to your desired database name.
-    *   Modify the `DB_NAME` variable in the <mcfile name="generate-migration" path="c:\Users\cheah\encore-go-template\database\scripts\generate-migration"></mcfile> script (around line 6) from `MY_DB_NAME` to the **same** desired database name.
+    *   Modify the `DB_NAME` constant in the database/database.go (around line 15) from `"MY_DB_NAME"` to your desired database name.
+    *   Modify the `DB_NAME` variable in the database/scripts/generate-migration (around line 6) from `MY_DB_NAME` to the **same** desired database name.
 
     **Important:** The `DB_NAME` must be identical in both <mcfile name="database.go" path="c:\Users\cheah\encore-go-template\database\database.go"></mcfile> and <mcfile name="generate-migration" path="c:\Users\cheah\encore-go-template\database\scripts\generate-migration"></mcfile> for the migration process to work correctly.
 
