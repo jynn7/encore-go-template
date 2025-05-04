@@ -46,10 +46,10 @@ This project demonstrates setting up a Go application using the Encore framework
 
 4.  **Set Database Name & Generate Initial Migration:**
     Before generating the migration, ensure you update the database name in **two** places:
-    *   Modify the `DB_NAME` constant in the `database/database.go` file (around line 15) from `"MY_DB_NAME"` to your desired database name.
-    *   Modify the `DB_NAME` variable in the `database/scripts/generate-migration` script (around line 6) from `MY_DB_NAME` to the **same** desired database name.
+    *   Modify the **string literal** passed as the first argument to `sqldb.NewDatabase` in the `database/database.go` file (around line 15) from `"my_db_name"` to your desired database name (must be in `snake_case`).
+    *   Modify the `DB_NAME` variable in the `database/scripts/generate-migration` script (around line 6) from `my_db_name` to the **same** desired database name used in `database.go`.
 
-    **Important:** The `DB_NAME` must be identical in both `database/database.go` and `database/scripts/generate-migration` for the migration process to work correctly.
+    **Important:** The database name must be identical (and in `snake_case`) in both `database/database.go` (as a string literal) and `database/scripts/generate-migration` (as a variable) for the migration process to work correctly.
 
     Also, configure how the script finds the Atlas executable in `database/scripts/generate-migration` (around lines 18-23):
     *   **If Atlas is NOT in your system's PATH:** Update the `ATLAS_PATH` variable (around line 22) with the full path to your `atlas.exe`.
