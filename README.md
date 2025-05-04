@@ -46,10 +46,27 @@ This project demonstrates setting up a Go application using the Encore framework
 
 4.  **Set Database Name & Generate Initial Migration:**
     Before generating the migration, ensure you update the database name in **two** places:
-    *   Modify the `DB_NAME` constant in the database/database.go (around line 15) from `"MY_DB_NAME"` to your desired database name.
-    *   Modify the `DB_NAME` variable in the database/scripts/generate-migration (around line 6) from `MY_DB_NAME` to the **same** desired database name.
+    *   Modify the `DB_NAME` constant in the `database/database.go` file (around line 15) from `"MY_DB_NAME"` to your desired database name.
+    *   Modify the `DB_NAME` variable in the `database/scripts/generate-migration` script (around line 6) from `MY_DB_NAME` to the **same** desired database name.
 
-    **Important:** The `DB_NAME` must be identical in both <mcfile name="database.go" path="c:\Users\cheah\encore-go-template\database\database.go"></mcfile> and <mcfile name="generate-migration" path="c:\Users\cheah\encore-go-template\database\scripts\generate-migration"></mcfile> for the migration process to work correctly.
+    **Important:** The `DB_NAME` must be identical in both `database/database.go` and `database/scripts/generate-migration` for the migration process to work correctly.
+
+    Also, configure how the script finds the Atlas executable in `database/scripts/generate-migration` (around lines 18-23):
+    *   **If Atlas is NOT in your system's PATH:** Update the `ATLAS_PATH` variable (around line 22) with the full path to your `atlas.exe`.
+        ```bash
+        # Example:
+        ATLAS_PATH="C:/path/to/your/atlas/bin/atlas-windows-amd64-latest.exe"
+        "$ATLAS_PATH" migrate diff ... # Keep this line active
+        ```
+    *   **If Atlas IS in your system's PATH:** Comment out the `ATLAS_PATH` variable definition and the line that uses it, and uncomment the line that calls `atlas` directly.
+        ```bash
+        # Comment out these two lines:
+        # ATLAS_PATH="C:/Users/cheah/atlas/bin/atlas-windows-amd64-latest.exe"
+        # "$ATLAS_PATH" migrate diff ...
+
+        # Uncomment this line (around line 21):
+        atlas migrate diff "$MIGRATION_NAME" --env local --dev-url "$(encore db conn-uri --shadow $DB_NAME)&search_path=public"
+        ```
 
     Then, use Git Bash (or a similar shell) to navigate to the `database` directory and run the script that generates the initial database migration based on your GORM models. Make sure you are in the project's root directory initially.
 

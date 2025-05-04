@@ -16,5 +16,8 @@ encore db reset --shadow $DB_NAME
 export ENCORERUNTIME_NOPANIC=1
 
 # Generate the migration
+# this path is executable path for atlas
+# if atlas is already in environment variable, then use that
+# atlas migrate diff "$MIGRATION_NAME" --env local --dev-url "$(encore db conn-uri --shadow $DB_NAME)&search_path=public"
 ATLAS_PATH="C:/Users/cheah/atlas/bin/atlas-windows-amd64-latest.exe"
 "$ATLAS_PATH" migrate diff "$MIGRATION_NAME" --env local --dev-url "$(encore db conn-uri --shadow $DB_NAME)&search_path=public"
