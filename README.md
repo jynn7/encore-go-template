@@ -7,7 +7,7 @@ This project demonstrates setting up a Go application using the Encore framework
 *   Go installed
 *   Encore framework installed
 *   PostgreSQL installed and running
-*   Atlas CLI installed (Download from [https://atlasgo.io/](https://atlasgo.io/))
+*   Atlas CLI installed (Download from [https://atlasgo.io/getting-started](https://atlasgo.io/getting-started))
 *   Git Bash (or a similar Unix-like shell environment on Windows) for running shell scripts
 
 ## Setup Instructions
