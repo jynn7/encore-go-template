@@ -43,6 +43,6 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 
-# database/migrations
-* database/migrations/*.sql
+# database/migrations - Ignore only SQL files within this directory
+/database/migrations/*.sql
 
